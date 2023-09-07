@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Project from "@/pages/Projects/Project";
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
@@ -10,12 +10,14 @@ interface Props {
 
 const Projects = ({setState}: Props) => {
     const [list, setList] = useState<Array<ProjectsList>>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         getList();
     }, [])
 
     const getList = async () => {
+        setLoading(true);
         try {
             const response = await fetch("/api/projects", {method: "GET",});
             const data = await response.json();
@@ -23,6 +25,7 @@ const Projects = ({setState}: Props) => {
         } catch (err) {
             console.error(err);
         }
+        setLoading(false);
     }
 
     return (
@@ -49,19 +52,30 @@ const Projects = ({setState}: Props) => {
                         </div>
                         <div className='max-w-2xl mx-auto py-10 flex'>
                             <div className="rounded-lg">
-                                <Splide aria-label="Projects">
-                                    {
-                                        list.length > 0 ? list.map(project =>
-                                            <SplideSlide key={project.title + '_splide'}>
-                                                <Project title={project.title}
-                                                         description={project.description}
-                                                         tags={project.tags}
-                                                         demoLink={project.demoLink}
-                                                         repoLink={project.repoLink}/>
-                                            </SplideSlide>
-                                        ) : null
-                                    }
-                                </Splide>
+                                {
+                                    loading ? (
+                                            <div
+                                                className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-blue-800 motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                                role="status">
+                                                <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                                                >Ładowanie zawartości...</span>
+                                            </div>
+                                        ) :
+                                        <Splide aria-label="Projects">
+                                            {
+
+                                                list.length > 0 ? list.map(project =>
+                                                    <SplideSlide key={project.title + '_splide'}>
+                                                        <Project title={project.title}
+                                                                 description={project.description}
+                                                                 tags={project.tags}
+                                                                 demoLink={project.demoLink}
+                                                                 repoLink={project.repoLink}/>
+                                                    </SplideSlide>
+                                                ) : null
+                                            }
+                                        </Splide>
+                                }
                             </div>
                         </div>
                         <div
