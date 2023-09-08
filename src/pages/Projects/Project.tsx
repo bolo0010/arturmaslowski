@@ -6,13 +6,13 @@ interface Props extends ProjectsList {
 
 const Project = ({title, description, tags, repoLink, demoLink}: Props) => {
     return (
-        <div className="w-10/12 rounded overflow-hidden shadow-lg mx-auto my-2">
+        <div className="w-10/12 rounded overflow-hidden shadow-lg mx-auto my-2 text-left">
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{title}</div>
                 <p className="text-gray-700 text-base">
                     {description}
                 </p>
-                <div className="px-6 pt-4 pb-2 flex justify-between">
+                <div className="pt-4 pb-2 flex justify-between items-center">
                     <div>
                         {
                             tags ? tags.length > 0 ? tags.map(tag => <span
@@ -20,7 +20,7 @@ const Project = ({title, description, tags, repoLink, demoLink}: Props) => {
                                 className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 lowercase">#{tag}</span>) : null : null
                         }
                     </div>
-                    <div>
+                    <div className='flex'>
                         {repoLink ? <span className="inline-block"><a href={repoLink} target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 24 24"
