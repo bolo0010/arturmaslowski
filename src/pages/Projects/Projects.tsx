@@ -66,12 +66,13 @@ const Projects = ({setState}: Props) => {
                                             {
 
                                                 list.length > 0 ? list.map(project =>
-                                                    <SplideSlide key={project.title + '_splide'}>
+                                                    <SplideSlide key={project.title + '_splide'} className="flex justify-center">
                                                         <Project title={project.title}
                                                                  description={project.description}
                                                                  tags={project.tags}
                                                                  demoLink={project.demoLink}
-                                                                 repoLink={project.repoLink}/>
+                                                                 repoLink={project.repoLink}
+                                                        />
                                                     </SplideSlide>
                                                 ) : null
                                             }
