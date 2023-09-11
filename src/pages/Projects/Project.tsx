@@ -7,9 +7,9 @@ interface Props extends ProjectsList {
 const Project = ({title, description, tags, repoLink, demoLink}: Props) => {
     return (
         <div className="w-10/12 rounded overflow-hidden shadow-lg mx-auto my-2 text-left">
-            <div className="px-6 py-4">
+            <div className="px-6 py-4 flex flex-col justify-between min-h-full">
                 <div className="font-bold text-xl mb-2">{title}</div>
-                <p className="text-gray-700 text-base">
+                <p className="text-gray-700 text-base mb-auto">
                     {description}
                 </p>
                 <div className="pt-4 pb-2 flex justify-between items-center">
