@@ -19,7 +19,7 @@ export const list = [
         tags: ['react', 'express', 'sequelize', 'draftjs'],
         repoLink: 'https://github.com/bolo0010/revpanel',
         demoLink: 'https://panel.arturmaslowski.pl/',
-        description: 'Wersja demo aplikacji utworzonej w celu zarządzania treścią na stronie internetowej. Umożliwia tworzenie tekstów oraz ich ocenę. Pozwala na publikowanie różnych treści oraz umożliwia zarządzanie użytkownikami znajdującymi się w redakcji. Login: AdminUser Hasło: abc1234',
+        description: 'Wersja demo aplikacji utworzonej w celu zarządzania treścią na stronie internetowej. Umożliwia tworzenie tekstów oraz ich ocenę. Pozwala na publikowanie różnych treści oraz umożliwia zarządzanie użytkownikami znajdującymi się w redakcji. Login: AdminUser Hasło: abcd1234',
     },
     {
         title: 'Okamikya',
